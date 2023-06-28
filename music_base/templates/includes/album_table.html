@@ -1,0 +1,22 @@
+<table class="table table-hover table-dark">
+    <thead>
+    <tr>
+        <th scope="col">Artist</th>
+        <th scope="col">Album Title</th>
+        <th scope="col">Year</th>
+        <th scope="col">Genre</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in content %}
+    <tr>
+        <td><a href="/artist/{{item.id}}">{{item.artist_name}}</a></td>
+        <td>{{item.album_title}}</td>
+        <td><a href="/albums/{{item.released_date}}">{{item.released_date}}</a></td>
+        <td>{{item.genre}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+

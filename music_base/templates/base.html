@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+   <head>
+        {% include './includes/style.html' %}
+      <title>
+         {% block title %}
+         {% endblock %}
+      </title>
+   </head>
+   <body>
+      <!-- Navbar here -->
+      {% include '/includes/navbar.html' %}
+      <!-- Future Content here -->
+      {% block content %}
+      {% endblock %}
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      {% include '/includes/script_links.html' %}
+   </body>
+</html>

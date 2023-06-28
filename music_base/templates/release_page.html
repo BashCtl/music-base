@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% include './includes/style.html' %}
+    <title>
+        Albums Released in {{ release_content[0].release_date }}
+    </title>
+</head>
+<body id="release_page">
+
+    {% include '/includes/navbar.html' %}
+
+    {% block content %}
+        <div class="row" style="margin-top: 50px; margin-left: 30px">
+            <div class="col-8">
+                <h2>  Albums Released in {{ release_content[0].released_date }}  Albums Page:</h2>
+                <br>
+                {% include '/includes/releases_table.html' %}
+            </div>
+        </div>
+    {% endblock %}
+    {% include '/includes/script_links.html' %}
+</body>
+</html>
+
