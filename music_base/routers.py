@@ -1,6 +1,8 @@
-from music_base import app, db
-from music_base.models import Album, Artist, Genre
-from flask import render_template, jsonify
+from music_base import app
+from music_base.models import Album, Artist, Genre, User
+from flask import render_template, request, flash, redirect, url_for
+from werkzeug.security import check_password_hash
+from flask_login import login_user, current_user
 
 
 @app.route("/")
@@ -33,3 +35,20 @@ def years_page(year):
     return render_template("release_page.html", release_content=release_content)
 
 
+@app.route("/main/dude/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+        user = User.query.filter_by(username=username).first()
+        if user:
+            if check_password_hash(user.password, password):
+                flash("Logged in successfully!", category="success")
+                login_user(user, remember=True)
+                return redirect(url_for("home_page"))
+            else:
+                flash("Dude, it's not correct password! Try again!", category="danger")
+        else:
+            flash("User doesn't exist.", category="danger")
+
+    return render_template("login.html", user=current_user)

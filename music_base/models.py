@@ -1,5 +1,10 @@
-from music_base import db
-from music_base import bcrypt
+from music_base import db, login_manager
+from flask_login import UserMixin
+
+
+@login_manager.user_loader
+def load_user(id):
+    return User.query.get(int(id))
 
 
 class Genre(db.Model):
@@ -20,3 +25,9 @@ class Album(db.Model):
     genre_id = db.Column(db.Integer(), db.ForeignKey("genre.id"), nullable=False)
     artist = db.relationship("Artist", backref="album")
     genre = db.relationship("Genre", backref="album")
+
+
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer(), primary_key=True)
+    username = db.Column(db.String(length=150), unique=True)
+    password = db.Column(db.String(length=150))

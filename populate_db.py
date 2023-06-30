@@ -1,5 +1,6 @@
-from music_base.models import db, Album, Artist, Genre
+from music_base.models import db, Album, Artist, Genre, User
 from music_base import app
+from werkzeug.security import generate_password_hash
 import csv
 
 
@@ -8,6 +9,20 @@ def read_csv(file):
         csv_file = csv.reader(file)
         next(csv_file, None)
         return list(csv_file)
+
+
+def populate_users_db(data):
+    for user in data:
+        username = user[0]
+        password = user[1]
+        user = User(username=username, password=generate_password_hash(password))
+        try:
+            with app.app_context():
+                db.create_all()
+                db.session.add(user)
+                db.session.commit()
+        except Exception as err:
+            print(f"Something went wrong:\n {err}")
 
 
 def populate_genre_db(data):
@@ -60,3 +75,6 @@ data_file = read_csv("albumlist.csv")
 # populate_genre_db(data_file)
 # populate_artist_db(data_file)
 # populate_album_db(data_file)
+
+users_data = read_csv("users.csv")
+populate_users_db(users_data)
