@@ -1,0 +1,501 @@
+album_id,album_title,link
+1,Sgt. Pepper's Lonely Hearts Club Band,https://www.youtube.com/watch?v=uPTWin_QJCI
+2,Pet Sounds,https://www.youtube.com/watch?v=Mh_yhTyae08
+3,Revolver,https://www.youtube.com/watch?v=b6z6YuyIcew
+4,Highway 61 Revisited,https://www.youtube.com/watch?v=8PP2MjP84Gw
+5,Rubber Soul,https://www.youtube.com/watch?v=5GShV3iBEPk
+6,What's Going On
+7,Exile on Main St.
+8,London Calling
+9,Blonde on Blonde
+10,"The Beatles (""The White Album"")"
+11,The Sun Sessions
+12,Kind of Blue
+13,The Velvet Underground & Nico
+14,Abbey Road
+15,Are You Experienced
+16,Blood on the Tracks
+17,Nevermind
+18,Born to Run
+19,Astral Weeks
+20,Thriller
+21,The Great Twenty_Eight
+22,The Complete Recordings
+23,John Lennon/Plastic Ono Band
+24,Innervisions
+25,"Live at the Apollo, 1962"
+26,Rumours
+27,The Joshua Tree
+28,Who's Next
+29,Led Zeppelin
+30,Blue
+31,Bringing It All Back Home
+32,Let It Bleed
+33,Ramones
+34,Music From Big Pink
+35,The Rise and Fall of Ziggy Stardust and the Spiders From Mars
+36,Tapestry
+37,Hotel California
+38,The Anthology
+39,Please Please Me
+40,Forever Changes
+41,Never Mind the Bollocks Here's the Sex Pistols
+42,The Doors
+43,The Dark Side of the Moon
+44,Horses
+45,"The Band (""The Brown Album"")"
+46,Legend: The Best of Bob Marley and The Wailers
+47,A Love Supreme
+48,It Takes a Nation of Millions to Hold Us Back
+49,At Fillmore East
+50,Here's Little Richard
+51,Bridge Over Troubled Water
+52,Greatest Hits
+53,Meet The Beatles!
+54,The Birth of Soul
+55,Electric Ladyland
+56,Elvis Presley
+57,Songs in the Key of Life
+58,Beggars Banquet
+59,Chronicle: The 20 Greatest Hits
+60,Trout Mask Replica
+61,Greatest Hits
+62,Appetite for Destruction
+63,Achtung Baby
+64,Sticky Fingers
+65,Back to Mono (1958-1969)
+66,Moondance
+67,Kid A
+68,Off the Wall
+69,[Led Zeppelin IV]
+70,The Stranger
+71,Graceland
+72,Superfly
+73,Physical Graffiti
+74,After the Gold Rush
+75,Star Time
+76,Purple Rain
+77,Back in Black
+78,Otis Blue: Otis Redding Sings Soul
+79,Led Zeppelin II
+80,Imagine
+81,The Clash
+82,Harvest
+83,Axis: Bold as Love
+84,I Never Loved a Man the Way I Love You
+85,Lady Soul
+86,Born in the U.S.A.
+87,The Wall
+88,At Folsom Prison
+89,Dusty in Memphis
+90,Talking Book
+91,Goodbye Yellow Brick Road
+92,20 Golden Greats
+93,"Sign ""Peace"" the Times"
+94,40 Greatest Hits
+95,Bitches Brew
+96,Tommy
+97,The Freewheelin' Bob Dylan
+98,This Year's Model
+99,There's a Riot Goin' On
+100,Odessey and Oracle
+101,In the Wee Small Hours
+102,Fresh Cream
+103,Giant Steps
+104,Sweet Baby James
+105,Modern Sounds in Country and Western Music
+106,Rocket to Russia
+107,Portrait of a Legend 1951-1964
+108,Hunky Dory
+109,Aftermath
+110,Loaded
+111,The Bends
+112,If You Can Believe Your Eyes and Ears
+113,Court and Spark
+114,Disraeli Gears
+115,The Who Sell Out
+116,Out of Our Heads
+117,Layla and Other Assorted Love Songs
+118,Late Registration
+119,At Last!
+120,Sweetheart of the Rodeo
+121,Stand!
+122,The Harder They Come
+123,Raising Hell
+124,Moby Grape
+125,Pearl
+126,Catch a Fire
+127,Younger Than Yesterday
+128,Raw Power
+129,Remain in Light
+130,Marquee Moon
+131,Paranoid
+132,Saturday Night Fever: The Original Movie Sound Track
+133,"The Wild, the Innocent & the E Street Shuffle"
+134,Ready to Die
+135,Slanted and Enchanted
+136,Greatest Hits
+137,Tim
+138,The Chronic
+139,Rejuvenation
+140,Parallel Lines
+141,Live at the Regal
+142,A Christmas Gift for You From Phil Spector
+143,Gris-Gris
+144,Straight Outta Compton
+145,Aja
+146,Surrealistic Pillow
+147,Deja vu
+148,Houses of the Holy
+149,Santana
+150,Darkness on the Edge of Town
+151,Funeral
+152,The B 52's / Play Loud
+153,The Low End Theory
+154,Moanin' in the Moonlight
+155,Pretenders
+156,Paul's Boutique
+157,Closer
+158,Captain Fantastic and the Brown Dirt Cowboy
+159,Alive!
+160,Electric Warrior
+161,The Dock of the Bay
+162,OK Computer
+163,1999
+164,The Very Best of Linda Ronstadt
+165,Let's Get It On
+166,Imperial Bedroom
+167,Master of Puppets
+168,My Aim Is True
+169,Exodus
+170,Live at Leeds
+171,The Notorious Byrd Brothers
+172,Every Picture Tells a Story
+173,Something/Anything?
+174,Desire
+175,Close to You
+176,Rocks
+177,One Nation Under a Groove
+178,The Anthology: 1961-1977
+179,The Definitive Collection
+180,"The Rolling Stones, Now!"
+181,Natty Dread
+182,Fleetwood Mac
+183,Red Headed Stranger
+184,The Immaculate Collection
+185,The Stooges
+186,Fresh
+187,So
+188,Buffalo Springfield Again
+189,Happy Trails
+190,From Elvis in Memphis
+191,Fun House
+192,The Gilded Palace of Sin
+193,Dookie
+194,Transformer
+195,"Blues Breakers With Eric Clapton (""The Beano Album"")"
+196,"Nuggets: Original Artyfacts From the First Psychedelic Era, 1965-1968"
+197,Murmur
+198,The Best of Little Walter
+199,Is This It
+200,Highway to Hell
+201,The Downward Spiral
+202,"Parsley, Sage, Rosemary and Thyme"
+203,Bad
+204,Modern Times
+205,Wheels of Fire
+206,Dirty Mind
+207,Abraxas
+208,Tea for the Tillerman
+209,Ten
+210,Everybody Knows This Is Nowhere
+211,Wish You Were Here
+212,Crooked Rain Crooked Rain
+213,Tattoo You
+214,Proud Mary: The Best of Ike and Tina Turner
+215,New York Dolls
+216,Bo Diddley / Go Bo Diddley
+217,Two Steps From the Blues
+218,The Queen Is Dead
+219,Licensed to Ill
+220,Look-Ka Py Py
+221,Loveless
+222,New Orleans Piano
+223,War
+224,The Neil Diamond Collection
+225,American Idiot
+226,Nebraska
+227,Doolittle
+228,Paid in Full
+229,Toys in the Attic
+230,Nick of Time
+231,A Night at the Opera
+232,The Kink Kronikles
+233,Mr. Tambourine Man
+234,Bookends
+235,The Ultimate Collection
+236,Mr. Excitement!
+237,My Generation
+238,Howlin' Wolf
+239,Like a Prayer
+240,Can't Buy a Thrill
+241,Let It Be
+242,Run D.M.C.
+243,Black Sabbath
+244,The Marshall Mathers LP
+245,All Killer No Filler! The Jerry Lee Lewis Anthology
+246,Freak Out!
+247,Live/Dead
+248,The Shape of Jazz to Come
+249,Automatic for the People
+250,Reasonable Doubt
+251,Low
+252,The Blueprint
+253,The River
+254,Complete & Unbelievable: The Otis Redding Dictionary of Soul
+255,"Metallica (""The Black Album"")"
+256,Trans Europa Express
+257,Whitney Houston
+258,The Kinks Are The Village Green Preservation Society
+259,The Velvet Rope
+260,Stardust
+261,American Beauty
+262,"Crosby, Stills & Nash"
+263,Tracy Chapman
+264,Workingman's Dead
+265,The Genius of Ray Charles
+266,Child Is Father to the Man
+267,Quadrophenia
+268,Paul Simon
+269,Psychocandy
+270,Some Girls
+271,The Beach Boys Today!
+272,Dig Me Out
+273,Going to a Go-Go
+274,Nightbirds
+275,The Slim Shady LP
+276,Mothership Connection
+277,Rhythm Nation 1814
+278,Anthology of American Folk Music
+279,Aladdin Sane
+280,All That You Can't Leave Behind
+281,My Life
+282,Folk Singer
+283,Can't Get Enough
+284,The Cars
+285,Music of My Mind
+286,I'm Still in Love With You
+287,Los Angeles
+288,Anthem of the Sun
+289,Something Else by The Kinks
+290,Call Me
+291,Talking Heads: 77
+292,The Basement Tapes
+293,White Light/White Heat
+294,Kick Out the Jams
+295,Songs of Love and Hate
+296,Meat Is Murder
+297,We're Only in It for the Money
+298,The College Dropout
+299,Weezer (Blue Album)
+300,Master of Reality
+301,Coat of Many Colors
+302,Fear of a Black Planet
+303,John Wesley Harding
+304,Grace
+305,Car Wheels on a Gravel Road
+306,Odelay
+307,A Hard Day's Night
+308,Songs for Swingin' Lovers!
+309,Willy and the Poor Boys
+310,Blood Sugar Sex Magik
+311,The Sun Records Collection
+312,Nothing's Shocking
+313,MTV Unplugged in New York
+314,The Miseducation of Lauryn Hill
+315,Damn the Torpedoes
+316,The Velvet Underground
+317,Surfer Rosa
+318,Back Stabbers
+319,Burnin'
+320,Amnesiac
+321,Pink Moon
+322,Sail Away
+323,Ghost in the Machine
+324,Station to Station
+325,Slowhand
+326,Disintegration
+327,Exile in Guyville
+328,Daydream Nation
+329,In the Jungle Groove
+330,Tonight's the Night
+331,Help!
+332,Shoot Out the Lights
+333,Wild Gift
+334,Squeezing Out Sparks
+335,Superunknown
+336,In Rainbows
+337,Aqualung
+338,Cheap Thrills
+339,The Heart of Saturday Night
+340,Damaged
+341,Play
+342,Violator
+343,Bat Out of Hell
+344,Berlin
+345,Stop Making Sense
+346,3 Feet High and Rising
+347,The Piper at the Gates of Dawn
+348,Muddy Waters at Newport 1960
+349,The Black Album
+350,Roger the Engineer
+351,Rust Never Sleeps
+352,Brothers in Arms
+353,My Beautiful Dark Twisted Fantasy
+354,52nd Street
+355,Having a Rave Up
+356,12 Songs
+357,Between the Buttons
+358,Sketches of Spain
+359,Honky Ch�teau
+360,Singles Going Steady
+361,Stankonia
+362,Siamese Dream
+363,Substance 1987
+364,L.A. Woman
+365,Rage Against the Machine
+366,American Recordings
+367,Ray of Light
+368,Eagles
+369,Louder Than Bombs
+370,Mott
+371,"Whatever People Say I Am, That's What I'm Not"
+372,Reggatta de Blanc
+373,Volunteers
+374,Siren
+375,Late for the Sky
+376,Post
+377,The Ultimate Collection: 1948-1990
+378,(What's the Story) Morning Glory?
+379,CrazySexyCool
+380,Funky Kingston
+381,The Smile Sessions
+382,The Modern Lovers
+383,More Songs About Buildings and Food
+384,A Quick One
+385,"""Love and Theft"""
+386,Pretzel Logic
+387,Enter the Wu_Tang: 36 Chambers
+388,The Indestructible Beat of Soweto
+389,The End of the Innocence
+390,Elephant
+391,The Pretender
+392,Let It Be
+393,Kala
+394,Good Old Boys
+395,Sound of Silver
+396,For Your Pleasure
+397,Blue Lines
+398,Eliminator
+399,Rain Dogs
+400,Anthology: The Best of The Temptations
+401,Californication
+402,Illmatic
+403,(pronounced 'leh-'nerd 'skin-'nerd)
+404,Dr. John's Gumbo
+405,Radio City
+406,Rid of Me
+407,Sandinista!
+408,I Do Not Want What I Haven't Got
+409,Strange Days
+410,Time Out of Mind
+411,461 Ocean Boulevard
+412,Pink Flag
+413,Double Nickels on the Dime
+414,Beauty and the Beat
+415,Van Halen
+416,Mule Variations
+417,Boy
+418,Band on the Run
+419,Dummy
+420,"The ""Chirping"" Crickets"
+421,"The Best of the Girl Groups, Volume 1"
+422,Presenting the Fabulous Ronettes Featuring Veronica
+423,Anthology
+424,The Rising
+425,Grievous Angel
+426,Cheap Trick at Budokan
+427,Sleepless
+428,Outlandos d'Amour
+429,Another Green World
+430,Vampire Weekend
+431,"Stories From the City, Stories From the Sea"
+432,Here Come the Warm Jets
+433,All Things Must Pass
+434,#1 Record
+435,In Utero
+436,Sea Change
+437,Tha Carter III
+438,Boys Don't Cry
+439,"Live at the Harlem Square Club, 1963"
+440,Rum Sodomy & the Lash
+441,Suicide
+442,Q: Are We Not Men? A: We Are Devo!
+443,In Color
+444,The World Is a Ghetto
+445,Fly Like an Eagle
+446,Back in the USA
+447,Getz / Gilberto
+448,Synchronicity
+449,Third/Sister Lovers
+450,For Everyman
+451,Back to Black
+452,John Prine
+453,Strictly Business
+454,Love It to Death
+455,How Will the Wolf Survive?
+456,"Here, My Dear"
+457,Z
+458,Tumbleweed Connection
+459,The Drifters' Golden Hits
+460,Live Through This
+461,Metal Box
+462,Document
+463,Heaven Up Here
+464,Hysteria
+465,69 Love Songs
+466,A Rush of Blood to the Head
+467,Tunnel of Love
+468,The Paul Butterfield Blues Band
+469,The Score
+470,Radio
+471,I Want to See the Bright Lights Tonight
+472,Faith
+473,The Smiths
+474,Proxima estacion: Esperanza
+475,Armed Forces
+476,Life After Death
+477,Down Every Road
+478,All Time Greatest Hits
+479,Maggot Brain
+480,Only Built 4 Cuban Linx
+481,Voodoo
+482,Guitar Town
+483,Entertainment!
+484,All the Young Dudes
+485,Vitalogy
+486,That's the Way of the World
+487,She's So Unusual
+488,New Day Rising
+489,Destroyer
+490,Tres hombres
+491,Born Under a Bad Sign
+492,Touch
+493,Yankee Hotel Foxtrot
+494,Oracular Spectacular
+495,Give It Up
+496,Boz Scaggs
+497,White Blood Cells
+498,The Stone Roses
+499,Live in Cook County Jail
+500,Aquemini

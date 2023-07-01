@@ -17,6 +17,13 @@ class Artist(db.Model):
     artist_name = db.Column(db.String(length=255), nullable=False, unique=True)
 
 
+class Link(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    link = db.Column(db.String(length=255))
+    album_id = db.Column(db.Integer(), db.ForeignKey("album.id"), nullable=False)
+    album = db.relationship("Album", backref="link")
+
+
 class Album(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     album_title = db.Column(db.String(length=255), nullable=False)

@@ -2,7 +2,7 @@ from music_base import app
 from music_base.models import Album, Artist, Genre, User
 from flask import render_template, request, flash, redirect, url_for
 from werkzeug.security import check_password_hash
-from flask_login import login_user, current_user
+from flask_login import login_user, current_user, logout_user
 
 
 @app.route("/")
@@ -45,10 +45,31 @@ def login():
             if check_password_hash(user.password, password):
                 flash("Logged in successfully!", category="success")
                 login_user(user, remember=True)
-                return redirect(url_for("home_page"))
+                return redirect(url_for("admin_page"))
             else:
                 flash("Dude, it's not correct password! Try again!", category="danger")
         else:
             flash("User doesn't exist.", category="danger")
 
     return render_template("login.html", user=current_user)
+
+
+@app.route("/logout")
+def logout_page():
+    logout_user()
+    flash("You have been logged out!", category="info")
+    return redirect(url_for("home_page"))
+
+
+@app.route("/main/dude", methods=["GET", "POST"])
+def admin_page():
+    genres = Genre.query.all()
+    if request.method == "POST":
+        artist_title = request.form.get("artist_title")
+        album_title = request.form.get("album_title")
+        genre_id = request.form.get("genre_select")
+        print(artist_title)
+        print(album_title)
+        print(genre_id)
+
+    return render_template("admin_page.html", genres=genres)
