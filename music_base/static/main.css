@@ -19,38 +19,30 @@ body#release_page {
     background-attachment: fixed
 }
 
+#login {
+    background-image: url('./login.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed
+}
+
 body#admin_page {
     background-image: url('./admin_bg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed
 }
-#admin_page {
-    margin-top: 50px;
-    margin-left: 30px
-}
-#select-genre{
-    width: 100px;
-}
-#admin_page nav {
-    background-color: black;
-}
-#admin_page .container {
-    margin-top: 100px;
-    padding: 10px
-}
-#admin_page  select{
- width: 50%;
-}
-#select-genre {
-    margin: auto;
-    width: 100%;
-    text-align: center;
-}
+
 h1,h2 {
     color: white;
 }
 
 .txt-20 {
     font-size: 20px;
+}
+
+.table-wrapper {
+  max-height: 100vh;
+  overflow: auto;
+  display:inline-block;
 }

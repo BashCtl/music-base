@@ -1,27 +1,24 @@
-<!doctype html>
-<html lang="en">
-<head>
-    {% include './includes/style.html' %}
-    <title>
-        {{ artist_content[0].artist_name }} Albums
-    </title>
-</head>
-<body id="artist_page">
-    <!-- Navbar here -->
-    {% include '/includes/navbar.html' %}
-    <!-- Future Content here -->
-    {% block content %}
-        <div class="row" style="margin-top: 50px; margin-left: 30px">
-            <div class="col-8">
-                <h2>{{ artist_content[0].artist_name }} Albums Page:</h2>
-                <br>
-                {% include '/includes/artist_page.html' %}
-            </div>
-        </div>
-    {% endblock %}
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    {% include '/includes/script_links.html' %}
+{% extends 'base.html' %}
+{% block title %}
+{{ artist_content[0].artist_name }} Albums
+{% endblock %}
+{% block body %}
+<body id="artist_page" class="container">
+<!-- Navbar here -->
+{% include '/includes/navbar.html' %}
+<!-- Future Content here -->
+{% block content %}
+<div class="row" style="margin-top: 50px; margin-left: 30px">
+    <div class="col-8">
+        <h2 class="my-4">{{ artist_content[0].artist_name }} Albums:</h2>
+        <br>
+        {% include '/includes/artist_page.html' %}
+    </div>
+</div>
+{% endblock %}
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+{% include '/includes/script_links.html' %}
 </body>
-</html>
+{% endblock %}
 

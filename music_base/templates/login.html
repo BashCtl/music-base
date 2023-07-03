@@ -1,23 +1,39 @@
 {% extends 'base.html' %}
 
-{% block content %}
-<div class="container bg-dark mt-5 pb-4 w-50" >
-    <h1 align="center" class="pt-2">Dudes Login</h1>
-    <form action="" method="POST">
-        <div class="form-group">
-            <label for="username" class="text-light txt-20">Username</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Dude enter your name..">
-        </div>
-         <div class="form-group">
-            <label for="password" class="text-light txt-20">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Dude enter your password..">
-        </div>
-        <br>
-        <div class="text-center">
-            <button type="submit" class="btn btn-light w-25 txt-20">Login</button>
-        </div>
-
-    </form>
-</div>
-
+{% block title %}
+Dude's Login
 {% endblock %}
+
+{% block body %}
+<body id="login">
+    {% include '/includes/flash_messages.html' %}
+    <div class="container w-50 ">
+        {% block content %}
+        <main class="bg-dark mt-5 px-3 py-3">
+            <h1 align="center" class="pt-2">Dudes Login</h1>
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label for="username" class="text-light txt-20 my-2">Username</label>
+                    <input type="text" class="form-control" id="username" name="username"
+                           placeholder="Dude enter your name..">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="text-light txt-20 my-2">Password</label>
+                    <input type="password" class="form-control" id="password" name="password"
+                           placeholder="Dude enter your password..">
+                </div>
+                <br>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary w-25 txt-20">Login</button>
+                </div>
+
+            </form>
+        </main>
+
+        {% endblock %}
+    </div>
+
+   {% include '/includes/script_links.html' %}
+</body>
+{% endblock %}
+

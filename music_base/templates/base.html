@@ -1,33 +1,24 @@
 <!doctype html>
 <html lang="en">
-   <head>
-        {% include './includes/style.html' %}
-      <title>
-         {% block title %}
-         {% endblock %}
-      </title>
-   </head>
-   <body>
-      <!-- Navbar here -->
-      {% include '/includes/navbar.html' %}
-      <!--  Flash messages      -->
-      {% with messages = get_flashed_messages(with_categories=true) %}
-         {% if messages %}
-            {% for category, message in messages %}
-                <div class="alert alert-{{category}} alter-dismissable fade show mt-5" role="alert">
-                    {{ message }}
-                    <button type="button" class="close" data-dismiss="alert">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            {% endfor %}
-         {% endif %}
-      {% endwith %}
-      <!-- Future Content here -->
-      {% block content %}
-      {% endblock %}
-      <!-- Optional JavaScript -->
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      {% include '/includes/script_links.html' %}
-   </body>
+<head>
+    {% include './includes/style.html' %}
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+</head>
+{% block body %}
+<body class="container">
+<!-- Navbar here -->
+{% include '/includes/navbar.html' %}
+<!--  Flash messages      -->
+{% include '/includes/flash_messages.html' %}
+<!-- Future Content here -->
+{% block content %}
+{% endblock %}
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+{% include '/includes/script_links.html' %}
+</body>
+{% endblock %}
 </html>
