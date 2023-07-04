@@ -68,8 +68,10 @@ def admin_page():
         artist_title = request.form.get("artist_title")
         album_title = request.form.get("album_title")
         genre_id = request.form.get("genre_select")
+        album_link = request.form.get("album_link")
         print(artist_title)
         print(album_title)
         print(genre_id)
+        print(album_link)
 
     return render_template("admin_page.html", genres=genres)

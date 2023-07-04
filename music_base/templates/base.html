@@ -8,16 +8,23 @@
     </title>
 </head>
 {% block body %}
-<body class="container">
-<!-- Navbar here -->
-{% include '/includes/navbar.html' %}
-<!--  Flash messages      -->
-{% include '/includes/flash_messages.html' %}
-<!-- Future Content here -->
-{% block content %}
-{% endblock %}
+<body>
+<header>
+    <!-- Navbar here -->
+    {% include '/includes/navbar.html' %}
+    <!--  Flash messages      -->
+    {% include '/includes/flash_messages.html' %}
+</header>
+<main>
+    <div class="container">
+        <!-- Future Content here -->
+        {% block content %}
+        {% endblock %}
+    </div>
+</main>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+{% include '/includes/footer.html' %}
 {% include '/includes/script_links.html' %}
 </body>
 {% endblock %}

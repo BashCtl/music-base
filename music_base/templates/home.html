@@ -1,16 +1,21 @@
 {% extends 'base.html'%}
 
 {% block title%}
-    Music Albums
+Music Albums
 {% endblock %}
 
 {% block content %}
+
 <div class="row" style="margin-top: 50px; margin-left: 30px">
-    <div class="col-8" >
+    <div class="col-8">
         <h2 class="my-4">Artists Albums Music Box</h2>
         <br>
-        {% include '/includes/album_table.html' %}
+        <div class="mb-3">
+             {% include '/includes/album_table.html' %}
+        </div>
+
     </div>
 </div>
+
 
 {% endblock %}

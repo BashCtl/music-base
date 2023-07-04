@@ -3,17 +3,27 @@
         Albums Released in {{ release_content[0].release_date }}
 {% endblock %}
 {% block body %}
-<body id="release_page" class="container">
-    {% include '/includes/navbar.html' %}
-    {% block content %}
-        <div class="row" style="margin-top: 50px; margin-left: 30px">
-            <div class="col-8">
-                <h2 class="my-4">  Albums Released in {{ release_content[0].released_date }}  Albums:</h2>
-                <br>
-                {% include '/includes/releases_table.html' %}
-            </div>
+<body id="release_page">
+    <header>
+        {% include '/includes/navbar.html' %}
+    </header>
+    <main>
+        <div class="container">
+            {% block content %}
+                <div class="row" >
+                    <div class="col-8 mt-5">
+                        <h2 class="my-4"> Albums Released in {{ release_content[0].released_date }} Albums:</h2>
+                        <br>
+                        <div>
+                            {% include '/includes/releases_table.html' %}
+                        </div>
+
+                    </div>
+                </div>
+            {% endblock %}
         </div>
-    {% endblock %}
+    </main>
+    {% include '/includes/footer.html' %}
     {% include '/includes/script_links.html' %}
 </body>
 {% endblock %}
