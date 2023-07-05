@@ -11,6 +11,6 @@ app.config["SECRET_KEY"] = "ee1fa70e6c35461896c12a0572012c76"
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
-
+login_manager.login_view = "admin_page"
 
 from music_base import routers

@@ -2,7 +2,7 @@ from music_base import app
 from music_base.models import Album, Artist, Genre, User
 from flask import render_template, request, flash, redirect, url_for
 from werkzeug.security import check_password_hash
-from flask_login import login_user, current_user, logout_user
+from flask_login import login_user, current_user, logout_user, login_required
 
 
 @app.route("/")
@@ -55,6 +55,7 @@ def login():
 
 
 @app.route("/logout")
+@login_required
 def logout_page():
     logout_user()
     flash("You have been logged out!", category="info")
@@ -62,6 +63,7 @@ def logout_page():
 
 
 @app.route("/main/dude", methods=["GET", "POST"])
+@login_required
 def admin_page():
     genres = Genre.query.all()
     if request.method == "POST":
