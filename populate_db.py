@@ -1,4 +1,4 @@
-from music_base.models import db, Album, Artist, Genre, User
+from music_base.models import db, Album, Artist, Genre, User, Role
 from music_base import app
 from werkzeug.security import generate_password_hash
 import csv
@@ -15,7 +15,8 @@ def populate_users_db(data):
     for user in data:
         username = user[0]
         password = user[1]
-        user = User(username=username, password=generate_password_hash(password))
+        role_id = user[2]
+        user = User(username=username, password=generate_password_hash(password), role_id=role_id)
         try:
             with app.app_context():
                 db.create_all()
@@ -23,6 +24,13 @@ def populate_users_db(data):
                 db.session.commit()
         except Exception as err:
             print(f"Something went wrong:\n {err}")
+
+
+def create_role_table():
+    with app.app_context():
+        db.create_all()
+        Role.insert_roles()
+        print("Role was inserted")
 
 
 def populate_genre_db(data):
@@ -75,6 +83,6 @@ data_file = read_csv("albumlist.csv")
 # populate_genre_db(data_file)
 # populate_artist_db(data_file)
 # populate_album_db(data_file)
-
+# create_role_table()
 users_data = read_csv("users.csv")
 populate_users_db(users_data)

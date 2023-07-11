@@ -5,6 +5,9 @@
         <th scope="col">Album Title</th>
         <th scope="col">Year</th>
         <th scope="col">Genre</th>
+        {% if current_user.is_admin %}
+        <th scope="col">Action</th>
+        {% endif %}
 
     </tr>
     </thead>
@@ -15,6 +18,9 @@
         <td>{{item.album_title}}</td>
         <td><a href="/albums/{{item.released_date}}">{{item.released_date}}</a></td>
         <td>{{item.genre}}</td>
+        {% if current_user.is_admin %}
+         <td><a class="btn btn-info" href="{{ url_for('edit', album_id=item.Album.id)}}">Edit</a></td>
+        {% endif %}
     </tr>
     {% endfor %}
     </tbody>

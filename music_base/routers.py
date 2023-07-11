@@ -1,8 +1,9 @@
-from music_base import app
+from music_base import app, db
 from music_base.models import Album, Artist, Genre, User
 from flask import render_template, request, flash, redirect, url_for
 from werkzeug.security import check_password_hash
 from flask_login import login_user, current_user, logout_user, login_required
+from .forms import EditAlbumForm
 
 
 @app.route("/")
@@ -10,7 +11,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 def home_page():
     content = Album.query.join(Artist, Album.artist_id == Artist.id) \
         .join(Genre, Album.genre_id == Genre.id) \
-        .add_columns(Album.album_title, Album.released_date,
+        .add_columns(Album.album_title, Album.id, Album.released_date,
                      Artist.artist_name, Genre.genre, Artist.id).order_by(Artist.artist_name).all()
     return render_template("home.html", content=content)
 
@@ -77,3 +78,30 @@ def admin_page():
         print(album_link)
 
     return render_template("admin_page.html", genres=genres)
+
+
+@app.route("/edit/<int:album_id>", methods=["GET", "POST"])
+@login_required
+def edit(album_id):
+    form = EditAlbumForm()
+
+    content = Album.query.join(Artist, Album.artist_id == Artist.id) \
+        .join(Genre, Album.genre_id == Genre.id) \
+        .add_columns(Album, Artist, Genre).filter(Album.id == album_id).order_by(
+        Artist.artist_name).first()
+
+    if form.validate_on_submit():
+        content.Artist.artist_name = form.artist_name.data
+        content.Album.album_title = form.album_title.data
+        content.Album.released_date = form.released_year.data
+        content.Album.genre_id = request.form.get("genre")
+        db.session.add(content.Album)
+        db.session.add(content.Artist)
+        db.session.commit()
+        flash("Successfully update!", category="success")
+        return redirect(url_for("home_page"))
+    form.artist_name.data = content.Artist.artist_name
+    form.album_title.data = content.Album.album_title
+    form.released_year.data = content.Album.released_date
+    form.genre.data = content.Album.genre_id
+    return render_template("edit_album.html", content=content, form=form)
