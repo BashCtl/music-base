@@ -4,15 +4,17 @@ from flask import render_template, request, flash, redirect, url_for
 from werkzeug.security import check_password_hash
 from flask_login import login_user, current_user, logout_user, login_required
 from .forms import EditAlbumForm, AddGenre
-
+from os import  getenv
 
 @app.route("/")
 @app.route("/home")
 def home_page():
+    page = request.args.get("page", 1, type=int)
+    rows_per_page = int(getenv("ROWS_PER_PAGE"))
     content = Album.query.join(Artist, Album.artist_id == Artist.id) \
         .join(Genre, Album.genre_id == Genre.id) \
         .add_columns(Album.album_title, Album.id, Album.released_date,
-                     Artist.artist_name, Genre.genre, Artist.id).order_by(Artist.artist_name).all()
+                     Artist.artist_name, Genre.genre, Artist.id).order_by(Artist.artist_name).paginate(page=page,per_page=rows_per_page)
     return render_template("home.html", content=content)
 
 

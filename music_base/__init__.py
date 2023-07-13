@@ -2,11 +2,14 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
+from dotenv import load_dotenv
+from os import getenv
 
 app = Flask(__name__)
+load_dotenv()
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///music.db"
-app.config["SECRET_KEY"] = "ee1fa70e6c35461896c12a0572012c76"
+app.config["SQLALCHEMY_DATABASE_URI"] = getenv("SQLALCHEMY_DATABASE_URI")
+app.config["SECRET_KEY"] = getenv("SECRET_KEY")
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)

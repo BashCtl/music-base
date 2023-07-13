@@ -1,0 +1,29 @@
+{% macro pagination_widget(pagination, endpoint) %}
+<ul class="pagination bg-dark mt-0">
+    <li class="border mx-3 p-2 {% if not pagination.has_prev %}disabled{% endif %}">
+        <a href="{% if pagination.has_prev %}{{ url_for(endpoint, page=pagination.prev_num, **kwargs) }}{% else %}#{% endif %}">
+            &laquo;
+        </a>
+    </li>
+    {% for p in pagination.iter_pages() %}
+        {% if p %}
+            {% if p == pagination.page %}
+            <li class="active border border-success border-2 p-1 mx-1">
+                <a href="{{ url_for(endpoint, page = p, **kwargs) }}">{{ p }}</a>
+            </li>
+            {% else %}
+            <li class="mx-1 p-2 border" >
+                <a href="{{ url_for(endpoint, page = p, **kwargs) }}">{{ p }}</a>
+            </li>
+            {% endif %}
+        {% else %}
+        <li class="disabled mx-1 p-2 border"><a href="#">&hellip;</a></li>
+        {% endif %}
+    {% endfor %}
+    <li class="border mx-3 p-2 {% if not pagination.has_next %}disabled{% endif %}">
+        <a  href="{% if pagination.has_next %}{{ url_for(endpoint, page=pagination.next_num, **kwargs) }}{% else %}#{% endif %}">
+            &raquo;
+        </a>
+    </li>
+</ul>
+{% endmacro %}

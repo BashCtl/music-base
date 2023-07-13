@@ -1,4 +1,4 @@
-<table class="table table-hover table-bordered table-striped-columns table-dark table-wrapper">
+<table class="table table-hover table-bordered table-striped-columns table-dark">
     <thead>
     <tr>
         <th scope="col">Artist</th>
@@ -12,17 +12,19 @@
     </tr>
     </thead>
     <tbody>
-    {% for item in content %}
+    {% for item in content.items %}
     <tr>
         <td><a href="/artist/{{item.id}}">{{item.artist_name}}</a></td>
         <td>{{item.album_title}}</td>
         <td><a href="/albums/{{item.released_date}}">{{item.released_date}}</a></td>
         <td>{{item.genre}}</td>
         {% if current_user.is_admin %}
-         <td><a class="btn btn-info" href="{{ url_for('edit', album_id=item.Album.id)}}">Edit</a></td>
+        <td><a class="btn btn-info" href="{{ url_for('edit', album_id=item.Album.id)}}">Edit</a></td>
         {% endif %}
     </tr>
     {% endfor %}
     </tbody>
+
 </table>
+
 

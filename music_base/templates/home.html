@@ -1,4 +1,5 @@
 {% extends 'base.html'%}
+{% import 'includes/_macros.html' as macros %}
 
 {% block title%}
 Music Albums
@@ -6,12 +7,16 @@ Music Albums
 
 {% block content %}
 
-<div class="row" style="margin-top: 50px; margin-left: 30px">
+<div class="row fixed" style="margin-top: 50px; margin-left: 30px">
     <div class="col-8">
-        <h2 class="my-4">Artists Albums Music Box</h2>
-        <br>
-        <div class="mb-3">
+        <h2 class="mt-4">Artists Albums Music Box</h2>
+        <div class="mb-5">
              {% include '/includes/album_table.html' %}
+            {% if content %}
+                <div class="pagination mb-2">
+                    {{ macros.pagination_widget(content, 'home_page') }}
+                </div>
+            {% endif %}
         </div>
 
     </div>

@@ -41,6 +41,10 @@ h1,h2 {
     font-size: 20px;
 }
 
+ul.pagination a {
+    text-decoration: none;
+}
+
 .table-wrapper {
   max-height: 68vh;
   overflow: auto;
