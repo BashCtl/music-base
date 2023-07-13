@@ -6,31 +6,8 @@
 <div class="container mt-5">
     <div class="row">
         {% if current_user.is_admin() %}
-        <form action="" method="POST" class="bg-secondary my-5 rounded-3">
-            {{ form.hidden_tag() }}
-            <div class="form-group my-2">
-                {{ form.artist_name.label(class="form-label fs-5") }}
-                {{ form.artist_name(class="form-control border-secondary") }}
-            </div>
-            <div class="form-group my-2">
-                {{ form.album_title.label(class="form-label fs-5") }}
-                {{ form.album_title(class="form-control border-secondary") }}
-            </div>
-              <div class="form-group my-2">
-                {{ form.released_year.label(class="form-label fs-5") }}
-                {{ form.released_year(class="form-control border-secondary") }}
-            </div>
-              <div class="form-group my-2">
-                {{ form.genre.label(class="form-label fs-5") }}
-                {{ form.genre(class="form-control border-secondary") }}
-            </div>
-            <div class="from-group my-3">
-                {{ form.submit(class="btn btn-primary w-100") }}
-            </div>
-        </form>
+            {% include 'includes/album_form.html' %}
         {% endif %}
     </div>
-
 </div>
-
 {% endblock %}

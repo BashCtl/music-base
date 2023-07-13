@@ -11,33 +11,23 @@ Administration
 
 {% block content %}
 <div class="container">
-    <div class="row" style="margin-top: 100px">
-        <div class="col-5 bg-dark py-3">
-             <form method="POST">
-                 <h4 class="text-light my-2">Adding new artist</h4>
-            <div class="my-2">
-                <label for="artist-title" class="form-label text-light">Enter Artist Title</label>
-                <input type="text" id="artist-title" class="form-control" name="artist_title">
-            </div>
-            <div class="my-2">
-                <label for="album-title" class="form-label text-light">Enter Album Title</label>
-                <input type="text" id="album-title" class="form-control" name="album_title">
-            </div>
-             <div class="my-2">
-                <label for="album-title" class="form-label text-light">Enter Album Link</label>
-                <input type="text" id="album-link" class="form-control" name="album_link">
-            </div>
-            <div class="my-2">
-                <label for="genre" class="form-label text-light">Select Music Genre</label>
-                <select name="genre_select" class="form-control">
-                    {% for item in genres %}
-                    <option value="{{item.id}}">{{item.genre}}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <br>
-            <button type="submit" class="btn btn-primary w-100">Save</button>
-        </form>
+    <div class="row gx-5" style="margin-top: 100px">
+        <div class="col-5 bg-secondary py-3 mx-5 rounded-3">
+            <h4>Adding new artist</h4>
+            {% if current_user.is_admin %}
+                 {% include 'includes/album_form.html' %}
+            {% endif %}
+        </div>
+        <div class="col-4 bg-secondary py-3 rounded-3">
+            <form id="genre_form" method="POST">
+                <div class="form-group my-2">
+                    {{ add_genre_form.genre.label(class="form-label fs-5") }}
+                    {{ add_genre_form.genre(class="form-control border-secondary") }}
+                </div>
+                <div class="form-group my-2">
+                    {{ add_genre_form.add_btn(class="btn btn-primary w-100", id="add_genre") }}
+                </div>
+            </form>
         </div>
 
     </div>

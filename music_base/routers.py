@@ -3,7 +3,7 @@ from music_base.models import Album, Artist, Genre, User
 from flask import render_template, request, flash, redirect, url_for
 from werkzeug.security import check_password_hash
 from flask_login import login_user, current_user, logout_user, login_required
-from .forms import EditAlbumForm
+from .forms import EditAlbumForm, AddGenre
 
 
 @app.route("/")
@@ -66,18 +66,40 @@ def logout_page():
 @app.route("/main/dude", methods=["GET", "POST"])
 @login_required
 def admin_page():
-    genres = Genre.query.all()
-    if request.method == "POST":
-        artist_title = request.form.get("artist_title")
-        album_title = request.form.get("album_title")
-        genre_id = request.form.get("genre_select")
-        album_link = request.form.get("album_link")
-        print(artist_title)
-        print(album_title)
-        print(genre_id)
-        print(album_link)
+    form = EditAlbumForm()
+    add_genre_form = AddGenre()
+    if form.submit.data and form.validate_on_submit():
+        artist_name = form.artist_name.data
+        album_title = form.album_title.data
+        released_year = form.released_year.data
+        genre_id = request.form.get("genre")
+        if Album.query.filter_by(album_title=album_title).first():
+            flash("Album already exists in database.", category="danger")
+            return redirect(url_for("admin_page"))
+        artist = Artist.query.filter_by(artist_name=artist_name).first()
+        if artist is None:
+            artist = Artist(artist_name=artist_name)
+            db.session.add(artist)
+        db.session.flush()
+        album = Album(album_title=album_title, released_date=released_year,
+                      artist_id=artist.id, genre_id=genre_id)
+        db.session.add(album)
+        db.session.commit()
+        flash("Successfully added new album.", category="success")
 
-    return render_template("admin_page.html", genres=genres)
+        return redirect(url_for("admin_page"))
+
+    if add_genre_form.add_btn.data and request.method == "POST":
+        genre_name = add_genre_form.genre.data
+        if Genre.query.filter_by(genre=genre_name).first():
+            flash(f"{genre_name} - genre already exists in database.", category="danger")
+        else:
+            db.session.add(Genre(genre=genre_name))
+            db.session.commit()
+            flash(f"{genre_name} - genre successfully added.", category="success")
+            return redirect(url_for("admin_page"))
+
+    return render_template("admin_page.html", form=form, add_genre_form=add_genre_form)
 
 
 @app.route("/edit/<int:album_id>", methods=["GET", "POST"])

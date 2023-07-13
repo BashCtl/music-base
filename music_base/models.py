@@ -21,6 +21,8 @@ class Artist(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     artist_name = db.Column(db.String(length=255), nullable=False, unique=True)
 
+    def __repr__(self):
+        return f"Artist({self.id}, {self.artist_name})"
 
 class Link(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
