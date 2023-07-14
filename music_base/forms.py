@@ -14,6 +14,7 @@ class EditAlbumForm(FlaskForm):
     artist_name = StringField("Artist:", validators=[DataRequired()])
     album_title = StringField("Album title:", validators=[DataRequired()])
     released_year = StringField("Release Year:", validators=[DataRequired(), Length(4)])
+    album_link = StringField("Album Link")
     genre = SelectField("Select genre: ", validators=[DataRequired()], choices=genre_choices, coerce=int)
     submit = SubmitField("Save")
 

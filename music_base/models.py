@@ -40,6 +40,10 @@ class Album(db.Model):
     artist = db.relationship("Artist", backref="album")
     genre = db.relationship("Genre", backref="album")
 
+    def __repr__(self):
+        return f"Album(id={self.id}, album_title={self.album_title}, release_date={self.released_date}," \
+               f"artist_id={self.artist_id}, genre_id={self.genre_id})"
+
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer(), primary_key=True)

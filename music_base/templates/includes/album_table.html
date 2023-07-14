@@ -15,7 +15,11 @@
     {% for item in content.items %}
     <tr>
         <td><a href="/artist/{{item.id}}">{{item.artist_name}}</a></td>
-        <td>{{item.album_title}}</td>
+        {% if item.Link.link %}
+            <td><a href="{{ item.Link.link }}" target="_blank">{{item.album_title}}</a></td>
+        {% else %}
+            <td>{{item.album_title}}</td>
+        {% endif %}
         <td><a href="/albums/{{item.released_date}}">{{item.released_date}}</a></td>
         <td>{{item.genre}}</td>
         {% if current_user.is_admin %}
