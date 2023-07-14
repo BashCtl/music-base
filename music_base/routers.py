@@ -81,6 +81,7 @@ def admin_page():
         album_title = form.album_title.data
         released_year = form.released_year.data
         genre_id = request.form.get("genre")
+        album_link = form.album_link.data
         if Album.query.filter_by(album_title=album_title).first():
             flash("Album already exists in database.", category="danger")
             return redirect(url_for("admin_page"))
@@ -92,6 +93,10 @@ def admin_page():
         album = Album(album_title=album_title, released_date=released_year,
                       artist_id=artist.id, genre_id=genre_id)
         db.session.add(album)
+        db.session.flush()
+        if album_link:
+            link = Link(link=album_link, album_id=album.id)
+            db.session.add(link)
         db.session.commit()
         flash("Successfully added new album.", category="success")
 
@@ -139,3 +144,15 @@ def edit(album_id):
         form.album_link.data = link.link
     form.genre.data = content.Album.genre_id
     return render_template("edit_album.html", content=content, form=form)
+
+
+@app.route("/delete/album/<int:id>", methods=["GET"])
+@login_required
+def delete_album(id):
+    album = Album.query.get_or_404(id)
+    if album:
+        db.session.delete(album)
+        db.session.commit()
+        flash(f"{album.album_title} - was deleted")
+    print(request.args)
+    return redirect(url_for("home_page", page=request.args.get("page")))

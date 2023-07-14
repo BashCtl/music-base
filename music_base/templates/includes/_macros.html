@@ -9,11 +9,11 @@
         {% if p %}
             {% if p == pagination.page %}
             <li class="active border border-success border-2 p-1 mx-1">
-                <a href="{{ url_for(endpoint, page = p, **kwargs) }}">{{ p }}</a>
+                <a href="{{ url_for(endpoint, page=p, **kwargs) }}">{{ p }}</a>
             </li>
             {% else %}
             <li class="mx-1 p-2 border" >
-                <a href="{{ url_for(endpoint, page = p, **kwargs) }}">{{ p }}</a>
+                <a href="{{ url_for(endpoint, page=p, **kwargs) }}">{{ p }}</a>
             </li>
             {% endif %}
         {% else %}

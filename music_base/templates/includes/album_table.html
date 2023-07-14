@@ -6,7 +6,7 @@
         <th scope="col">Year</th>
         <th scope="col">Genre</th>
         {% if current_user.is_admin %}
-        <th scope="col">Action</th>
+        <th class="text-center" scope="col">Action</th>
         {% endif %}
 
     </tr>
@@ -23,7 +23,11 @@
         <td><a href="/albums/{{item.released_date}}">{{item.released_date}}</a></td>
         <td>{{item.genre}}</td>
         {% if current_user.is_admin %}
-        <td><a class="btn btn-info" href="{{ url_for('edit', album_id=item.Album.id)}}">Edit</a></td>
+        <td>
+            <a class="btn btn-info mx-1" href="{{ url_for('edit', album_id=item.Album.id)}}">Edit</a>
+            <a class="btn btn-danger mx-1"  onclick="deleteAlbum({{item.Album.id}})" href="{{ url_for('delete_album', id=item.Album.id)}}">Delete</a>
+        </td>
+
         {% endif %}
     </tr>
     {% endfor %}

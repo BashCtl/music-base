@@ -24,11 +24,11 @@ class Artist(db.Model):
     def __repr__(self):
         return f"Artist({self.id}, {self.artist_name})"
 
+
 class Link(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     link = db.Column(db.String(length=255))
     album_id = db.Column(db.Integer(), db.ForeignKey("album.id"), nullable=False)
-    album = db.relationship("Album", backref="link")
 
 
 class Album(db.Model):
@@ -39,6 +39,7 @@ class Album(db.Model):
     genre_id = db.Column(db.Integer(), db.ForeignKey("genre.id"), nullable=False)
     artist = db.relationship("Artist", backref="album")
     genre = db.relationship("Genre", backref="album")
+    link = db.relationship("Link", backref="album", cascade="all")
 
     def __repr__(self):
         return f"Album(id={self.id}, album_title={self.album_title}, release_date={self.released_date}," \
@@ -52,10 +53,10 @@ class User(db.Model, UserMixin):
     role_id = db.Column(db.Integer, db.ForeignKey("role.id"))
 
     def __init__(self, **kwargs):
-        super(User,self).__init__(**kwargs)
+        super(User, self).__init__(**kwargs)
         self.role = Role.query.filter_by(id=self.role_id).first()
 
-    def action(self,perm):
+    def action(self, perm):
         return self.role is not None and self.role.has_permission(perm)
 
     def is_admin(self):
@@ -93,8 +94,8 @@ class Role(db.Model):
     @staticmethod
     def insert_roles():
         roles = {
-            "User":[Permission.COMMENT],
-            "Administrator":[Permission.ADMIN, Permission.COMMENT]
+            "User": [Permission.COMMENT],
+            "Administrator": [Permission.ADMIN, Permission.COMMENT]
         }
         for role_key in roles.keys():
             role = Role.query.filter_by(name=role_key).first()
