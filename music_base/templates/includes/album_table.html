@@ -16,16 +16,17 @@
     <tr>
         <td><a href="/artist/{{item.id}}">{{item.artist_name}}</a></td>
         {% if item.Link.link %}
-            <td><a href="{{ item.Link.link }}" target="_blank">{{item.album_title}}</a></td>
+        <td><a href="{{ item.Link.link }}" target="_blank">{{item.album_title}}</a></td>
         {% else %}
-            <td>{{item.album_title}}</td>
+        <td>{{item.album_title}}</td>
         {% endif %}
         <td><a href="/albums/{{item.released_date}}">{{item.released_date}}</a></td>
-        <td>{{item.genre}}</td>
+        <td><a href="{{ url_for('genre_page',type=item.genre) }}">{{item.genre}}</a></td>
         {% if current_user.is_admin %}
-        <td>
+        <td class="text-center">
             <a class="btn btn-info mx-1" href="{{ url_for('edit', album_id=item.Album.id)}}">Edit</a>
-            <a class="btn btn-danger mx-1"  onclick="deleteAlbum({{item.Album.id}})" href="{{ url_for('delete_album', id=item.Album.id)}}">Delete</a>
+            <a class="btn btn-danger mx-1" onclick="deleteAlbum({{item.Album.id}})"
+               href="{{ url_for('delete_album', id=item.Album.id)}}">Delete</a>
         </td>
 
         {% endif %}

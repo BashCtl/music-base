@@ -1,0 +1,19 @@
+<table class="table table-bordered table-hover table-dark">
+    <thead>
+    <tr>
+        <th scope="col">Artist</th>
+        <th scope="col">Album Title</th>
+        <th scope="col">Year</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for  item in content %}
+    <tr>
+        <td>{{item.artist_name}}</td>
+        <td>{{item.album_title}}</td>
+        <td>{{item.released_date}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+

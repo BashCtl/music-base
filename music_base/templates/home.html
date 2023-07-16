@@ -7,18 +7,17 @@ Music Albums
 
 {% block content %}
 
-<div class="row fixed" style="margin-top: 50px; margin-left: 30px">
-    <div class="col-8">
-        <h2 class="mt-4">Artists Albums Music Box</h2>
-        <div class="mb-5">
+<div class="container">
+    <div class="row mt-4">
+        <div class="col mt-5">
+            <h2 class="my-3">Artists Albums Music Box </h2>
              {% include '/includes/album_table.html' %}
-            {% if content %}
-                <div class="pagination mb-2">
-                    {{ macros.pagination_widget(content, 'home_page') }}
-                </div>
+              {% if content %}
+            <div class="pagination mb-2">
+                {{ macros.pagination_widget(content, 'home_page') }}
+            </div>
             {% endif %}
         </div>
-
     </div>
 </div>
 

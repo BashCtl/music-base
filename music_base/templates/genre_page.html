@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% import 'includes/_macros.html' as macros %}
+
+{% block title %}Genre {% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col mt-5">
+            <h2 class="my-3">{{ genre }} :</h2>
+            {% include 'includes/genre_table.html' %}
+              {% if content %}
+                <div class="pagination mb-2">
+                    {{ macros.pagination_widget(content, 'genre_page', type=genre) }}
+                </div>
+            {% endif %}
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% endblock %}

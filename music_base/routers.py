@@ -44,6 +44,20 @@ def years_page(year):
     return render_template("release_page.html", release_content=release_content)
 
 
+@app.route("/genre/<string:type>")
+def genre_page(type):
+    page = request.args.get("page", 1, type=int)
+    rows_per_page = int(getenv("ROWS_PER_PAGE"))
+    content = Artist.query.join(Album, Album.artist_id == Artist.id) \
+        .join(Genre, Genre.id == Album.genre_id) \
+        .add_columns(Artist.artist_name, Album.album_title, Genre.genre, Album.released_date) \
+        .filter(Genre.genre == type) \
+        .paginate(page=page,
+                  per_page=rows_per_page)
+
+    return render_template("genre_page.html", content=content, genre=type)
+
+
 @app.route("/main/dude/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -154,5 +168,4 @@ def delete_album(id):
         db.session.delete(album)
         db.session.commit()
         flash(f"{album.album_title} - was deleted")
-    print(request.args)
     return redirect(url_for("home_page", page=request.args.get("page")))
