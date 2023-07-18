@@ -1,10 +1,10 @@
-from music_base import app, db
-from music_base.models import Album, Artist, Genre, User, Link
-from flask import render_template, request, flash, redirect, url_for
+from src import app, db
+from src.models.models import Album, Artist, Genre, User, Link
+from flask import render_template, request, flash, redirect, url_for, session
 from sqlalchemy import or_
 from werkzeug.security import check_password_hash
 from flask_login import login_user, current_user, logout_user, login_required
-from .forms import EditAlbumForm, AddGenre
+from src.forms.forms import EditAlbumForm, AddGenre
 from os import getenv
 
 
@@ -12,8 +12,10 @@ from os import getenv
 @app.route("/home")
 def home_page():
     page = request.args.get("page", 1, type=int)
+    session["page"] = page
+    session.modified = True
     rows_per_page = int(getenv("ROWS_PER_PAGE"))
-    content = Album.query.join(Artist, Album.artist_id == Artist.id) \
+    pagination = Album.query.join(Artist, Album.artist_id == Artist.id) \
         .join(Genre, Album.genre_id == Genre.id) \
         .outerjoin(Link, or_(Link.album_id == Album.id, Link.album_id is None)) \
         .add_columns(Album.album_title, Album.id, Album.released_date,
@@ -21,7 +23,7 @@ def home_page():
         .order_by(Artist.artist_name).paginate(page=page,
                                                per_page=rows_per_page)
 
-    return render_template("home.html", content=content)
+    return render_template("home.html", content=pagination)
 
 
 @app.route("/artist/<id>")
@@ -134,30 +136,30 @@ def admin_page():
 def edit(album_id):
     form = EditAlbumForm()
 
-    content = Album.query.join(Artist, Album.artist_id == Artist.id) \
+    album_content = Album.query.join(Artist, Album.artist_id == Artist.id) \
         .join(Genre, Album.genre_id == Genre.id) \
-        .add_columns(Album, Artist, Genre).filter(Album.id == album_id).order_by(
+        .add_columns(Artist, Genre).filter(Album.id == album_id).order_by(
         Artist.artist_name).first()
-    link = Link.query.filter_by(album_id=content.Album.id).first()
+    link = Link.query.filter_by(album_id=album_content.Album.id).first()
     if form.validate_on_submit():
-        content.Artist.artist_name = form.artist_name.data
-        content.Album.album_title = form.album_title.data
-        content.Album.released_date = form.released_year.data
-        content.Album.genre_id = request.form.get("genre")
-        link = Link(link=form.album_link.data, album_id=content.Album.id)
-        db.session.add(content.Album)
-        db.session.add(content.Artist)
-        db.session.add(link)
+        album_content.Artist.artist_name = form.artist_name.data
+        album_content.Album.album_title = form.album_title.data
+        album_content.Album.released_date = form.released_year.data
+        album_content.Album.genre_id = request.form.get("genre")
+        link = Link(link=form.album_link.data, album_id=album_content.Album.id)
+        if not link:
+            db.session.add(link)
         db.session.commit()
         flash("Successfully update!", category="success")
-        return redirect(url_for("home_page"))
-    form.artist_name.data = content.Artist.artist_name
-    form.album_title.data = content.Album.album_title
-    form.released_year.data = content.Album.released_date
+        return redirect(url_for("home_page", page=session["page"]))
+    form.artist_name.data = album_content.Artist.artist_name
+    form.album_title.data = album_content.Album.album_title
+    form.released_year.data = album_content.Album.released_date
+    form.genre.data = album_content.Album.genre_id
     if link:
         form.album_link.data = link.link
-    form.genre.data = content.Album.genre_id
-    return render_template("edit_album.html", content=content, form=form)
+
+    return render_template("edit_album.html", form=form)
 
 
 @app.route("/delete/album/<int:id>", methods=["GET"])

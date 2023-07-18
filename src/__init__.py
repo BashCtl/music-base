@@ -16,4 +16,4 @@ bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = "admin_page"
 
-from music_base import routers
+from src.views import routers

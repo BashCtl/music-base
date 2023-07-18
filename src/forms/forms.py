@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, StringField, SelectField
 from wtforms.validators import DataRequired, Length
-from music_base.models import Genre
+from src.models.models import Genre
 from flask import current_app
 
 

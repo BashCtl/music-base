@@ -1,6 +1,6 @@
 import csv
-from music_base.models import db, Album, Artist, Genre, User
-from music_base import app
+from src.models.models import db, Album, Artist, Genre, User
+from src import app
 
 
 def get_albums(file_csv):

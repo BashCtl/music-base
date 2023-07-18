@@ -1,5 +1,5 @@
-from music_base.models import db, Album, Artist, Genre, User, Role
-from music_base import app
+from src.models.models import db, Album, Artist, Genre, User, Role
+from src import app
 from werkzeug.security import generate_password_hash
 import csv
 
