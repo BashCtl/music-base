@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ url_for('home_page') }}">
+        <a class="navbar-brand" href="{{ url_for('main.home_page') }}">
            <i class="bi bi-music-note-beamed"></i>
             Music Base</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
@@ -9,18 +9,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url_for('home_page')}}">Home <span class="sr-only"></span></a>
+                    <a class="nav-link" href="{{ url_for('main.home_page')}}">Home <span class="sr-only"></span></a>
                 </li>
             </ul>
             {% if current_user.is_authenticated %}
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url_for('admin_page')}}">Administration<span class="sr-only"></span></a>
+                    <a class="nav-link" href="{{ url_for('admin.admin_page')}}">Administration<span class="sr-only"></span></a>
                 </li>
             </ul>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url_for('logout_page')}}">Logout <span class="sr-only"></span></a>
+                    <a class="nav-link" href="{{ url_for('admin.logout_page')}}">Logout <span class="sr-only"></span></a>
                 </li>
             </ul>
             {% endif %}

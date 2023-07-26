@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
+{% import 'includes/_macros.html' as macros %}
+
 {% block title %}
-        Albums Released in {{ release_content[0].release_date }}
+        Albums Released in {{ year  }}
 {% endblock %}
 {% block body %}
 <body id="release_page">
@@ -12,10 +14,14 @@
             {% block content %}
                 <div class="row" >
                     <div class="col-8 mt-5">
-                        <h2 class="my-4"> Albums Released in {{ release_content[0].released_date }}:</h2>
-                        <br>
+                        <h2 class="my-4"> Albums Released in {{ year }} :</h2>
                         <div>
                             {% include '/includes/releases_table.html' %}
+                             {% if release_content %}
+                            <div class="pagination mb-2">
+                                {{ macros.pagination_widget(release_content, 'main.release_page', year=year) }}
+                            </div>
+                            {% endif %}
                         </div>
 
                     </div>

@@ -11,15 +11,10 @@
             {% include 'includes/genre_table.html' %}
               {% if content %}
                 <div class="pagination mb-2">
-                    {{ macros.pagination_widget(content, 'genre_page', type=genre) }}
+                    {{ macros.pagination_widget(content, 'main.genre_page', type=genre) }}
                 </div>
             {% endif %}
         </div>
-
     </div>
-
 </div>
-
-
-
 {% endblock %}

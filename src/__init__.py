@@ -4,16 +4,29 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from dotenv import load_dotenv
 from os import getenv
+from src.config import Config
 
 app = Flask(__name__)
 load_dotenv()
 
-app.config["SQLALCHEMY_DATABASE_URI"] = getenv("SQLALCHEMY_DATABASE_URI")
-app.config["SECRET_KEY"] = getenv("SECRET_KEY")
+db = SQLAlchemy()
+bcrypt = Bcrypt()
+login_manager = LoginManager()
+login_manager.login_view = "adin.admin_page"
 
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
-login_manager = LoginManager(app)
-login_manager.login_view = "admin_page"
 
-from src.views import routers
+def create_app(config_class=Config):
+    app = Flask(__name__)
+    app.config.from_object(config_class)
+
+    db.init_app(app)
+    bcrypt.init_app(app)
+    login_manager.init_app(app)
+
+    from src.views.main import main
+    from src.views.admin import admin
+
+    app.register_blueprint(main)
+    app.register_blueprint(admin)
+
+    return app

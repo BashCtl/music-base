@@ -12,11 +12,11 @@ Music Albums
         <div class="col mt-5">
             <h2 class="my-3">Music Box </h2>
              {% include '/includes/album_table.html' %}
-              {% if content %}
-            <div class="pagination mb-2">
-                {{ macros.pagination_widget(content, 'home_page') }}
-            </div>
-            {% endif %}
+                {% if content %}
+                <div class="pagination mb-2">
+                    {{ macros.pagination_widget(content, 'main.home_page') }}
+                </div>
+                {% endif %}
         </div>
     </div>
 </div>

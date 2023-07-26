@@ -19,6 +19,6 @@ class EditAlbumForm(FlaskForm):
     submit = SubmitField("Save")
 
 
-class AddGenre(FlaskForm):
+class AddGenreForm(FlaskForm):
     genre = StringField("New Genre:", validators=[DataRequired()])
     add_btn = SubmitField("Add")
