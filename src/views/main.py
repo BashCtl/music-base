@@ -1,5 +1,6 @@
 from src import app, db
-from src.models.models import Album, Artist, Genre, User, Link
+from src.models.models import Album, Artist, Genre, Link
+from src.forms.forms import SearchForm
 from flask import render_template, request, Blueprint, session
 from sqlalchemy import or_
 from os import getenv
@@ -61,3 +62,21 @@ def genre_page(type):
                   per_page=rows_per_page)
 
     return render_template("genre_page.html", content=content, genre=type)
+
+
+# Pass Stuff to Navbar
+@main.context_processor
+def base():
+    form = SearchForm()
+    return dict(form=form)
+
+
+@main.route("/search", methods=["POST"])
+def search():
+    form = SearchForm()
+    albums = Album.query
+    if form.validate_on_submit():
+        searched = form.searched.data
+        albums = albums.filter(Album.album_title.like(f"%{searched}%"))
+        albums = albums.order_by(Album.album_title)
+        return render_template("search.html", form=form, searched=searched, albums=albums)

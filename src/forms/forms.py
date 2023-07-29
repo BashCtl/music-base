@@ -10,6 +10,12 @@ def genre_choices():
         return [(g.id, g.genre) for g in Genre.query.all()]
 
 
+class LoginForm(FlaskForm):
+    username = StringField("Username", validators=[DataRequired()])
+    password = StringField("Password", validators=[DataRequired()])
+    submit = SubmitField("Login")
+
+
 class EditAlbumForm(FlaskForm):
     artist_name = StringField("Artist:", validators=[DataRequired()])
     album_title = StringField("Album title:", validators=[DataRequired()])
@@ -22,3 +28,8 @@ class EditAlbumForm(FlaskForm):
 class AddGenreForm(FlaskForm):
     genre = StringField("New Genre:", validators=[DataRequired()])
     add_btn = SubmitField("Add")
+
+
+class SearchForm(FlaskForm):
+    searched = StringField("Search", validators=[DataRequired()])
+    submit = SubmitField("Search")

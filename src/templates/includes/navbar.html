@@ -24,8 +24,10 @@
                 </li>
             </ul>
             {% endif %}
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" role="search" action="{{ url_for('main.search') }}" method="POST">
+                {{ form.hidden_tag() }}
+
+                <input class="form-control me-2" name="searched" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success mx-2" type="submit">Search</button>
             </form>
         </div>

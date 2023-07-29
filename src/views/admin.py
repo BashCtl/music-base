@@ -3,16 +3,17 @@ from werkzeug.security import check_password_hash
 from flask_login import login_user, current_user, logout_user, login_required
 from src import db
 from src.models.models import User, Album, Artist, Genre, Link
-from src.forms.forms import AddGenreForm, EditAlbumForm
+from src.forms.forms import AddGenreForm, EditAlbumForm, LoginForm
 
 admin = Blueprint("admin", __name__)
 
 
 @admin.route("/main/dude/login", methods=["GET", "POST"])
 def login():
-    if request.method == "POST":
-        username = request.form.get("username")
-        password = request.form.get("password")
+    form = LoginForm()
+    if form.validate_on_submit():
+        username = form.username.data
+        password = form.password.data
         user = User.query.filter_by(username=username).first()
         if user:
             if check_password_hash(user.password, password):
@@ -24,7 +25,7 @@ def login():
         else:
             flash("User doesn't exist.", category="danger")
 
-    return render_template("login.html", user=current_user)
+    return render_template("login.html", user=current_user, form=form)
 
 
 @admin.route("/logout")

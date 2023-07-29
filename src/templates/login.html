@@ -12,19 +12,18 @@ Dude's Login
         <main class="bg-dark mt-5 px-3 py-3">
             <h1 align="center" class="pt-2">Dudes Login</h1>
             <form action="" method="POST">
+                {{ form.hidden_tag() }}
                 <div class="form-group">
-                    <label for="username" class="text-light txt-20 my-2">Username</label>
-                    <input type="text" class="form-control" id="username" name="username"
-                           placeholder="Dude enter your name..">
+                    {{ form.username.label(class="text-light txt-20 my-2") }}
+                    {{ form.username(class="form-control", placeholder="Dude enter your name..") }}
                 </div>
                 <div class="form-group">
-                    <label for="password" class="text-light txt-20 my-2">Password</label>
-                    <input type="password" class="form-control" id="password" name="password"
-                           placeholder="Dude enter your password..">
+                    {{ form.password.label(class="text-light txt-20 my-2") }}
+                    {{ form.password(class="form-control", type="password", placeholder="Dude enter your password..") }}
                 </div>
                 <br>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary w-25 txt-20">Login</button>
+                    {{ form.submit(class="btn btn-primary w-25 txt-20") }}
                 </div>
 
             </form>
