@@ -71,12 +71,28 @@ def base():
     return dict(form=form)
 
 
-@main.route("/search", methods=["POST"])
+@main.route("/search", methods=["POST", "GET"])
 def search():
+    page = request.args.get("page", 1, type=int)
+    rows_per_page = int(getenv("ROWS_PER_PAGE"))
     form = SearchForm()
-    albums = Album.query
     if form.validate_on_submit():
         searched = form.searched.data
-        albums = albums.filter(Album.album_title.like(f"%{searched}%"))
-        albums = albums.order_by(Album.album_title)
-        return render_template("search.html", form=form, searched=searched, albums=albums)
+        session["searched"] = searched
+        session.modified = True
+        content = (db.session.query(Album, Artist, Genre)
+                   .join(Artist, Artist.id == Album.artist_id)
+                   .join(Genre, Genre.id == Album.genre_id)
+                   .filter(or_(Album.album_title.like(f"%{searched}%"),
+                               Artist.artist_name.like(f"%{searched}%"),
+                               Genre.genre.like(f"%{searched}%")))
+                   .paginate(page=page, per_page=rows_per_page))
+        return render_template("search.html", form=form, searched=searched, content=content)
+    content = (db.session.query(Album, Artist, Genre)
+               .join(Artist, Artist.id == Album.artist_id)
+               .join(Genre, Genre.id == Album.genre_id)
+               .filter(or_(Album.album_title.like(f"%{session['searched']}%"),
+                           Artist.artist_name.like(f"%{session['searched']}%"),
+                           Genre.genre.like(f"%{session['searched']}%")))
+               .paginate(page=page, per_page=rows_per_page))
+    return render_template("search.html", form=form, content=content)

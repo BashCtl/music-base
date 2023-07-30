@@ -16,6 +16,9 @@ class Genre(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     genre = db.Column(db.String(length=255), nullable=False, unique=True)
 
+    def __repr__(self):
+        return f"Genre({self.id}, {self.genre})"
+
 
 class Artist(db.Model):
     id = db.Column(db.Integer(), primary_key=True)

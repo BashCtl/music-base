@@ -1,0 +1,26 @@
+<table class="table table-hover table-bordered table-striped-columns table-dark">
+    <thead>
+    <tr>
+        <th scope="col">Artist</th>
+        <th scope="col">Album Title</th>
+        <th scope="col">Year</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in content.items %}
+    <tr>
+        <td><a href="{{ url_for('main.artist_page', id=item.Artist.id) }}">{{item.Artist.artist_name}}</a></td>
+        {% if item.Album.link %}
+        <td><a href="{{ item.Album.link }}" target="_blank">{{item.Album.album_title}}</a></td>
+        {% else %}
+        <td>{{item.Album.album_title}}</td>
+        {% endif %}
+        <td><a href="{{ url_for('main.release_page', year=item.Album.released_date) }}">{{item.Album.released_date}}</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+

@@ -10,16 +10,18 @@ Search Results
 <div class="container">
     <div class="row mt-4">
         <div class="col mt-5">
-            <h2 class="my-3">Search Results...</h2>
-            {{ searched }}
-            {% for album in albums %}
-            <p class="text-white">{{ album.album_title }}</p>
-            {% endfor %}
-<!--                {% if content %}-->
-<!--                <div class="pagination mb-2">-->
-<!--                    {{ macros.pagination_widget(content, 'main.home_page') }}-->
-<!--                </div>-->
-<!--                {% endif %}-->
+            <h2 class="my-3">Search Results by "{{ searched }}" ...</h2>
+                {% if content %}
+                    {% include '/includes/search_result.html' %}
+                {% else %}
+                    <p class="text-white">No results</p>
+                {% endif %}
+            <!--Pagination-->
+                {% if content %}
+                    <div class="pagination mb-2">
+                        {{ macros.pagination_widget(content, 'main.search') }}
+                    </div>
+                {% endif %}
         </div>
     </div>
 </div>
