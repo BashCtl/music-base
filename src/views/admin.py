@@ -1,4 +1,4 @@
-from flask import  Blueprint, request, flash, render_template, redirect, url_for, session
+from flask import Blueprint, request, flash, render_template, redirect, url_for, session
 from werkzeug.security import check_password_hash
 from flask_login import login_user, current_user, logout_user, login_required
 from src import db
@@ -113,12 +113,12 @@ def edit(album_id):
     return render_template("edit_album.html", form=form)
 
 
-@admin.route("/delete/album/<int:id>", methods=["GET"])
+@admin.route("/delete/album/<int:id>", methods=["GET", "POST"])
 @login_required
 def delete_album(id):
     album = Album.query.get_or_404(id)
     if album:
         db.session.delete(album)
         db.session.commit()
-        flash(f"{album.album_title} - was deleted")
+        flash(f"{album.album_title} - was deleted", category="info")
     return redirect(url_for("main.home_page", page=session["page"]))

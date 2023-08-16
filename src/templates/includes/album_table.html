@@ -25,10 +25,28 @@
         {% if current_user.is_admin %}
         <td class="text-center">
             <a class="btn btn-info mx-1" href="{{ url_for('admin.edit', album_id=item.Album.id)}}">Edit</a>
-            <a class="btn btn-danger mx-1" onclick="deleteAlbum({{item.Album.id}})"
-               href="{{ url_for('admin.delete_album', id=item.Album.id)}}">Delete</a>
+            <a class="btn btn-danger mx-1" data-bs-toggle="modal" data-bs-target="#delete{{item.Album.id}}">Delete</a>
         </td>
-
+        <!-- Modal       -->
+        <div class="modal" id="delete{{item.Album.id}}" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Delete Album</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete '{{item.album_title}}' album?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <form action="{{ url_for('admin.delete_album', id=item.Album.id)}}" method="POST">
+                            <input type="submit" class="btn btn-danger" onclick="deleteAlbum({{item.Album.id}})" value="Delete">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         {% endif %}
     </tr>
     {% endfor %}
