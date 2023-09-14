@@ -7,7 +7,6 @@ from src.services.content_service import ContentService
 
 main = Blueprint("main", __name__)
 
-
 @main.route("/")
 @main.route("/home")
 def home_page():
