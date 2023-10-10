@@ -28,6 +28,20 @@ def admin_page():
     return AdminService.admin_main(form, add_genre_form, delete_genre_form)
 
 
+@admin.route("/main/dude/new_genre", methods=["POST"])
+@login_required
+def add_genre():
+    add_genre_form = AddGenreForm()
+    return AdminService.add_genre(add_genre_form)
+
+
+@admin.route("/main/dude/delete_genre", methods=["POST"])
+@login_required
+def delete_genre():
+    delete_genre_form = DeleteGenreForm()
+    return AdminService.delete_genre(delete_genre_form=delete_genre_form)
+
+
 @admin.route("/edit/<int:album_id>", methods=["GET", "POST"])
 @login_required
 def edit(album_id):

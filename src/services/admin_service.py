@@ -29,9 +29,6 @@ class AdminService:
     @staticmethod
     def admin_main(form: EditAlbumForm, add_genre_form: AddGenreForm, delete_genre_form: DeleteGenreForm):
         AdminService.__add_album(form)
-        AdminService.__add_genre(add_genre_form)
-        AdminService.__delete_genre(delete_genre_form)
-
         return render_template("admin_page.html", form=form, add_genre_form=add_genre_form,
                                delete_genre_form=delete_genre_form)
 
@@ -108,21 +105,22 @@ class AdminService:
             return redirect(url_for("admin.admin_page"))
 
     @staticmethod
-    def __add_genre(add_genre_form: AddGenreForm):
+    def add_genre(add_genre_form: AddGenreForm):
         if add_genre_form.add_btn.data and request.method == "POST":
-            genre_name = add_genre_form.genre.data
+            genre_name = add_genre_form.add_genre.data
             if Genre.query.filter_by(genre=genre_name).first():
                 flash(f"{genre_name} - genre already exists in database.", category="danger")
             else:
                 db.session.add(Genre(genre=genre_name))
                 db.session.commit()
                 flash(f"{genre_name} - genre successfully added.", category="success")
+                add_genre_form.add_genre.data = ""
                 return redirect(url_for("admin.admin_page"))
 
     @staticmethod
-    def __delete_genre(delete_genre_form: DeleteGenreForm):
+    def delete_genre(delete_genre_form: DeleteGenreForm):
         if delete_genre_form.delete_btn and request.method == "POST":
-            genre_id = delete_genre_form.genre.data
+            genre_id = delete_genre_form.del_genre.data
             genre_to_delete = Genre.query.filter_by(id=genre_id).first()
             if genre_to_delete:
                 db.session.delete(genre_to_delete)

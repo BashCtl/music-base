@@ -19,19 +19,19 @@ Administration
             {% endif %}
         </div>
         <div class="col-4 bg-secondary py-3 rounded-3">
-            <form id="genre_form" method="POST">
+            <form id="genre_form" action="{{ url_for('admin.add_genre') }}" method="POST">
                 <div class="form-group my-2">
-                    {{ add_genre_form.genre.label(class="form-label fs-5") }}
-                    {{ add_genre_form.genre(class="form-control border-secondary") }}
+                    {{ add_genre_form.add_genre.label(class="form-label fs-5") }}
+                    {{ add_genre_form.add_genre(class="form-control border-secondary") }}
                 </div>
                 <div class="form-group my-2">
                     {{ add_genre_form.add_btn(class="btn btn-dark w-100", id="add_genre") }}
                 </div>
             </form>
-            <form id="delete-genre" method="POST">
+            <form id="delete-genre" action="{{ url_for('admin.delete_genre') }}" method="POST">
                 <div class="from-group my-2">
-                    {{ delete_genre_form.genre.label(class="form-label fs-5") }}
-                    {{ delete_genre_form.genre(class="form-control border-secondary") }}
+                    {{ delete_genre_form.del_genre.label(class="form-label fs-5") }}
+                    {{ delete_genre_form.del_genre(class="form-control border-secondary") }}
                 </div>
                 <div class="form-group my-2">
                     {{ delete_genre_form.delete_btn(class="btn btn-danger w-100", id="delete-genre") }}

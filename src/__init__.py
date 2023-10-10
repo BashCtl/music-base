@@ -12,7 +12,7 @@ load_dotenv()
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 login_manager = LoginManager()
-login_manager.login_view = "adin.admin_page"
+login_manager.login_view = "admin.admin_page"
 
 
 def create_app(config_class=Config):
