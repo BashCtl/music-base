@@ -1,0 +1,28 @@
+name: Testing build
+
+on: [ push, pull_request ]
+
+jobs:
+  test:
+    environment:
+      name: musicbase
+    env:
+      SQLALCHEMY_DATABASE_URI: ${{secrets.DATABASE_URL}}
+      TEST_DATABASE_URI: ${{secrets.TEST_DATABASE_URI}}
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
+      ROWS_PER_PAGE: 8
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pulling git repo
+        uses: actions/checkout@v2
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.11"
+      - name: Update pip
+        run: python -m pip install --upgrade pip
+      - name: Install all dependencies
+        run: pip install -r requirements.txt
+      - name: Run tests with pytest
+        run: pytest -s -v -p no:warnings
