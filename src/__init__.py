@@ -1,9 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from dotenv import load_dotenv
-from os import getenv
 from src.config import Config
 
 app = Flask(__name__)
@@ -22,6 +22,7 @@ def create_app(config_class=Config):
     db.init_app(app)
     bcrypt.init_app(app)
     login_manager.init_app(app)
+    migrate = Migrate(app, db)
 
     from src.views.main import main
     from src.views.admin import admin

@@ -1,7 +1,7 @@
 from flask import Blueprint
 from flask_login import login_required
 
-from src.forms.forms import AddGenreForm, EditAlbumForm, LoginForm
+from src.forms.forms import AddGenreForm, EditAlbumForm, LoginForm, DeleteGenreForm
 from src.services.admin_service import AdminService
 
 admin = Blueprint("admin", __name__)
@@ -24,7 +24,8 @@ def logout_page():
 def admin_page():
     form = EditAlbumForm()
     add_genre_form = AddGenreForm()
-    return AdminService.admin_main(form, add_genre_form)
+    delete_genre_form = DeleteGenreForm()
+    return AdminService.admin_main(form, add_genre_form, delete_genre_form)
 
 
 @admin.route("/edit/<int:album_id>", methods=["GET", "POST"])

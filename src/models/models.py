@@ -39,7 +39,7 @@ class Album(db.Model):
     album_title = db.Column(db.String(length=255), nullable=False)
     released_date = db.Column(db.String(length=4), nullable=False)
     artist_id = db.Column(db.Integer(), db.ForeignKey("artist.id"), nullable=False)
-    genre_id = db.Column(db.Integer(), db.ForeignKey("genre.id"), nullable=False)
+    genre_id = db.Column(db.Integer(), db.ForeignKey("genre.id"))
     artist = db.relationship("Artist", backref="album")
     genre = db.relationship("Genre", backref="album")
     link = db.relationship("Link", backref="album", cascade="all")

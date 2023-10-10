@@ -25,7 +25,16 @@ Administration
                     {{ add_genre_form.genre(class="form-control border-secondary") }}
                 </div>
                 <div class="form-group my-2">
-                    {{ add_genre_form.add_btn(class="btn btn-primary w-100", id="add_genre") }}
+                    {{ add_genre_form.add_btn(class="btn btn-dark w-100", id="add_genre") }}
+                </div>
+            </form>
+            <form id="delete-genre" method="POST">
+                <div class="from-group my-2">
+                    {{ delete_genre_form.genre.label(class="form-label fs-5") }}
+                    {{ delete_genre_form.genre(class="form-control border-secondary") }}
+                </div>
+                <div class="form-group my-2">
+                    {{ delete_genre_form.delete_btn(class="btn btn-danger w-100", id="delete-genre") }}
                 </div>
             </form>
         </div>

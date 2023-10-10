@@ -11,7 +11,11 @@
     <tr>
         <td>{{item.artist_name}}</td>
         <td>{{item.album_title}}</td>
+        {% if item.genre %}
         <td>{{item.genre}}</td>
+        {% else %}
+        <td>Not Specified</td>
+        {% endif %}
     </tr>
     {% endfor %}
     </tbody>

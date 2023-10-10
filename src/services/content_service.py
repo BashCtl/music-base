@@ -15,7 +15,7 @@ class ContentService:
         session.modified = True
         rows_per_page = int(getenv("ROWS_PER_PAGE"))
         return Album.query.join(Artist, Album.artist_id == Artist.id) \
-            .join(Genre, Album.genre_id == Genre.id) \
+            .outerjoin(Genre, Album.genre_id == Genre.id) \
             .outerjoin(Link, or_(Link.album_id == Album.id, Link.album_id is None)) \
             .add_columns(Album.album_title, Album.id, Album.released_date,
                          Artist.artist_name, Genre.genre, Artist.id, Link) \
@@ -25,7 +25,7 @@ class ContentService:
     @staticmethod
     def get_artist_content(artist_id):
         return Artist.query.join(Album, Album.artist_id == Artist.id) \
-            .join(Genre, Album.genre_id == Genre.id) \
+            .outerjoin(Genre, Album.genre_id == Genre.id) \
             .add_columns(Album.album_title, Album.released_date,
                          Artist.artist_name, Genre.genre).filter(Artist.id == artist_id).all()
 
@@ -33,7 +33,7 @@ class ContentService:
     def get_content_by_release_year(year, page):
         rows_per_page = int(getenv("ROWS_PER_PAGE"))
         return Artist.query.join(Album, Album.artist_id == Artist.id) \
-            .join(Genre, Album.genre_id == Genre.id) \
+            .outerjoin(Genre, Album.genre_id == Genre.id) \
             .add_columns(Album.album_title, Album.released_date,
                          Artist.artist_name, Genre.genre) \
             .filter(Album.released_date == year).paginate(page=page,

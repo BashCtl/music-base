@@ -3,7 +3,7 @@ from werkzeug.security import check_password_hash
 from flask_login import login_user, current_user, logout_user, login_required
 from src import db
 from src.models.models import User, Album, Artist, Genre, Link
-from src.forms.forms import AddGenreForm, EditAlbumForm, LoginForm
+from src.forms.forms import AddGenreForm, EditAlbumForm, LoginForm, DeleteGenreForm
 
 
 class AdminService:
@@ -27,11 +27,13 @@ class AdminService:
         return render_template("login.html", user=current_user, form=form)
 
     @staticmethod
-    def admin_main(form: EditAlbumForm, add_genre_form: AddGenreForm):
+    def admin_main(form: EditAlbumForm, add_genre_form: AddGenreForm, delete_genre_form: DeleteGenreForm):
         AdminService.__add_album(form)
         AdminService.__add_genre(add_genre_form)
+        AdminService.__delete_genre(delete_genre_form)
 
-        return render_template("admin_page.html", form=form, add_genre_form=add_genre_form)
+        return render_template("admin_page.html", form=form, add_genre_form=add_genre_form,
+                               delete_genre_form=delete_genre_form)
 
     @staticmethod
     def edit_album(album_id, form: EditAlbumForm):
@@ -115,4 +117,15 @@ class AdminService:
                 db.session.add(Genre(genre=genre_name))
                 db.session.commit()
                 flash(f"{genre_name} - genre successfully added.", category="success")
+                return redirect(url_for("admin.admin_page"))
+
+    @staticmethod
+    def __delete_genre(delete_genre_form: DeleteGenreForm):
+        if delete_genre_form.delete_btn and request.method == "POST":
+            genre_id = delete_genre_form.genre.data
+            genre_to_delete = Genre.query.filter_by(id=genre_id).first()
+            if genre_to_delete:
+                db.session.delete(genre_to_delete)
+                db.session.commit()
+                flash(f"{genre_to_delete.genre} - genre successfully deleted.", category="success")
                 return redirect(url_for("admin.admin_page"))
