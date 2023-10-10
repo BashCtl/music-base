@@ -10,7 +10,7 @@ jobs:
       SQLALCHEMY_DATABASE_URI: ${{secrets.DATABASE_URL}}
       TEST_DATABASE_URI: ${{secrets.TEST_DATABASE_URI}}
       SECRET_KEY: ${{secrets.SECRET_KEY}}
-      ROWS_PER_PAGE: 8
+      ROWS_PER_PAGE: ${{secrets.ROWS_PER_PAGE}}
 
     runs-on: ubuntu-latest
     steps:
