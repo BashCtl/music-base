@@ -1,5 +1,8 @@
 venv
 db_helpers
 .idea
+__pycache__
+*/*/__pycache__
+
 db_helpers/users.csv
 .env
