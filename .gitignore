@@ -3,6 +3,6 @@ db_helpers
 .idea
 __pycache__
 */*/__pycache__
-
+instance
 db_helpers/users.csv
 .env
